@@ -9,7 +9,7 @@ import { DecryptRequestDto } from './dto/decrypt-request.dto';
 export class CryptoController {
   constructor(private readonly cryptoService: CryptoService) {}
 
-  @Post('get-encrypt-data')
+  @Post('encrypt-data')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Encrypt a string payload using AES and RSA' })
   @ApiBody({ type: EncryptRequestDto })
@@ -17,7 +17,7 @@ export class CryptoController {
     status: 200, 
     description: 'Returns RSA-encrypted AES key (data1) and AES-encrypted payload (data2)' 
   })
-  async getEncryptData(@Body() body: EncryptRequestDto) {
+  async encryptData(@Body() body: EncryptRequestDto) {
     // Service returns { data1: string, data2: string }
     const result = await this.cryptoService.encryptData(body.payload);
     
@@ -28,7 +28,7 @@ export class CryptoController {
     };
   }
 
-  @Post('get-decrypt-data')
+  @Post('decrypt-data')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Decrypt data1 and data2 to recover the original payload' })
   @ApiBody({ type: DecryptRequestDto })
@@ -36,7 +36,7 @@ export class CryptoController {
     status: 200, 
     description: 'Returns the original string payload' 
   })
-  async getDecryptData(@Body() body: DecryptRequestDto) {
+  async decryptData(@Body() body: DecryptRequestDto) {
     // Service returns the decrypted string
     const payload = await this.cryptoService.decryptData(body.data1, body.data2);
     
