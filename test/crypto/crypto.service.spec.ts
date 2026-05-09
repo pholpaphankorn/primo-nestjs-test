@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { CryptoService } from "../../src/crypto/crypto.service";
+import { CryptoService } from '../../src/crypto/crypto.service';
 import { BadRequestException } from '@nestjs/common';
 
 describe('CryptoService', () => {

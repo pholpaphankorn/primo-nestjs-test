@@ -15,7 +15,7 @@ async function bootstrap() {
     .setDescription('API for RSA and AES encryption/decryption')
     .setVersion('1.0')
     .build();
-  
+
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api-docs', app, document);
 

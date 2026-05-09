@@ -1,5 +1,5 @@
-import { CryptoController } from "./crypto.controller";
-import { CryptoService } from "./crypto.service";
+import { CryptoController } from './crypto.controller';
+import { CryptoService } from './crypto.service';
 import { Module } from '@nestjs/common';
 
 @Module({
