@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, ArgumentsHost } from '@nestjs/common';
+import { HttpException, HttpStatus } from '@nestjs/common';
 import { GlobalExceptionFilter } from './http-exception.filter';
 
 describe('GlobalExceptionFilter', () => {
@@ -21,7 +21,7 @@ describe('GlobalExceptionFilter', () => {
         getResponse: jest.fn().mockReturnValue(mockResponse),
         getRequest: jest.fn().mockReturnValue({}),
       }),
-    } as unknown as ArgumentsHost;
+    };
   });
 
   it('should catch an HttpException and return the formatted JSON', () => {
