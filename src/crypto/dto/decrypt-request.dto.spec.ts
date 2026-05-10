@@ -14,7 +14,7 @@ describe('DecryptRequestDto', () => {
       data2: 'iv:base64-encoded-ciphertext',
     };
     const errors = await validateDto(data);
-    
+
     expect(errors.length).toBe(0);
   });
 
@@ -22,7 +22,7 @@ describe('DecryptRequestDto', () => {
     it('should fail when data1 is missing', async () => {
       const data = { data2: 'some-payload' };
       const errors = await validateDto(data);
-      
+
       expect(errors.length).toBeGreaterThan(0);
       expect(errors[0].property).toBe('data1');
     });
@@ -30,9 +30,11 @@ describe('DecryptRequestDto', () => {
     it('should fail when data1 is not a string', async () => {
       const data = { data1: 12345, data2: 'some-payload' };
       const errors = await validateDto(data);
-      
+
       expect(errors.length).toBeGreaterThan(0);
-      expect(errors.find(e => e.property === 'data1')?.constraints).toHaveProperty('isString');
+      expect(
+        errors.find((e) => e.property === 'data1')?.constraints,
+      ).toHaveProperty('isString');
     });
   });
 
@@ -40,7 +42,7 @@ describe('DecryptRequestDto', () => {
     it('should fail when data2 is missing', async () => {
       const data = { data1: 'some-key' };
       const errors = await validateDto(data);
-      
+
       expect(errors.length).toBeGreaterThan(0);
       expect(errors[0].property).toBe('data2');
     });
@@ -48,9 +50,11 @@ describe('DecryptRequestDto', () => {
     it('should fail when data2 is not a string', async () => {
       const data = { data1: 'some-key', data2: true };
       const errors = await validateDto(data);
-      
+
       expect(errors.length).toBeGreaterThan(0);
-      expect(errors.find(e => e.property === 'data2')?.constraints).toHaveProperty('isString');
+      expect(
+        errors.find((e) => e.property === 'data2')?.constraints,
+      ).toHaveProperty('isString');
     });
   });
 });

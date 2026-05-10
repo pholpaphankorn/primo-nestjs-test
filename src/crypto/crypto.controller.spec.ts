@@ -35,7 +35,7 @@ describe('CryptoController', () => {
     it('should call service.encryptData and return wrapped response', async () => {
       const mockResult = { data1: 'rsa_key', data2: 'aes_data' };
       const payload = { payload: 'hello' };
-      
+
       // Tell the mock what to return
       mockCryptoService.encryptData.mockResolvedValue(mockResult);
 
@@ -54,7 +54,7 @@ describe('CryptoController', () => {
     it('should call service.decryptData and return wrapped response', async () => {
       const mockPayload = 'original_message';
       const body = { data1: 'key', data2: 'data' };
-      
+
       mockCryptoService.decryptData.mockResolvedValue(mockPayload);
 
       const response = await controller.decryptData(body);

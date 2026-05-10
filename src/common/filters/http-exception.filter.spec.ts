@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus,ArgumentsHost } from '@nestjs/common';
+import { HttpException, HttpStatus, ArgumentsHost } from '@nestjs/common';
 import { GlobalExceptionFilter } from './http-exception.filter';
 
 describe('GlobalExceptionFilter', () => {
@@ -32,7 +32,7 @@ describe('GlobalExceptionFilter', () => {
 
     // Verify status was called with 400
     expect(mockResponse.status).toHaveBeenCalledWith(status);
-    
+
     // Verify JSON structure matches your requirement
     expect(mockResponse.json).toHaveBeenCalledWith({
       successful: false,
@@ -47,8 +47,10 @@ describe('GlobalExceptionFilter', () => {
     filter.catch(exception, mockArgumentsHost);
 
     // Verify it defaults to 500 when the error isn't an HttpException
-    expect(mockResponse.status).toHaveBeenCalledWith(HttpStatus.INTERNAL_SERVER_ERROR);
-    
+    expect(mockResponse.status).toHaveBeenCalledWith(
+      HttpStatus.INTERNAL_SERVER_ERROR,
+    );
+
     expect(mockResponse.json).toHaveBeenCalledWith({
       successful: false,
       error_code: 'INTERNAL_SERVER_ERROR',
