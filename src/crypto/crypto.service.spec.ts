@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { CryptoService } from '../../src/crypto/crypto.service';
+import { CryptoService } from './crypto.service';
 import { BadRequestException } from '@nestjs/common';
 
 describe('CryptoService', () => {
@@ -79,6 +79,7 @@ G/SivksMNyfi3vU87s0CQETcgGJUvj/jpAii4oAG1r7ZnKVB2+Hs2bIjoiiUEA6K
   });
 
   describe('Error Handling', () => {
+    
     it('should throw BadRequestException if data1 (RSA) is malformed', async () => {
       const data1 = 'invalid-base64-data';
       const data2 = 'iv:payload';
