@@ -5,7 +5,7 @@ import { EncryptRequestDto } from './dto/encrypt-request.dto';
 import { DecryptRequestDto } from './dto/decrypt-request.dto';
 
 @ApiTags('Crypto Operations')
-@Controller() // Routes are defined directly (e.g., /get-encrypt-data)
+@Controller() // Routes are defined directly (e.g., /encrypt-data)
 export class CryptoController {
   constructor(private readonly cryptoService: CryptoService) {}
 
